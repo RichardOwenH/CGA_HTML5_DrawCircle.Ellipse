@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Draw Circle</title>
+	<meta charset="windows-1252">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+	<link rel="stylesheet" type="text/css" href="DrawCircle.css"/>
+	<script src="DrawCircle.js"></script>
+</head>
+<body>
+	<nav id="sidebar">
+		<ul class ="Circle"></ul>
+	</nav>
+	<div class="container">
+		<div class="Circle">
+			<h1>Welcome To Our Circle and Ellipse Generator</h1><br>
+			
+			<form>
+				<div class="Main">
+					<h3>Main Settings</h3>
+					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16"  onclick="save()">
+  					<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+  					<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+					</svg>
+					<!-- Change Option-->
+					<label>Choose Option</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="inputGroupSelect01">Options</label>
+						</div>
+						<select class="custom-select" id="opt" onchange="check()">
+							<option selected value="NULL">Choose...</option>
+							<option value="1">Circle</option>
+							<option value="2">Ellipse</option>
+						</select>
+					</div>
+
+					<!-- Input Form -->
+					<div class="form-group" id="Radius">
+						<label for="formGroupExampleInput">Input Radius (r)</label>
+						<input type="text" class="form-control" id="r" placeholder="Input Radius Number">
+					</div>
+					<div class="form-group" id="Aaxis">
+						<label for="formGroupExampleInput">Input First Axis (a)</label>
+						<input type="text" class="form-control" id="a" placeholder="Input Radius Number">
+					</div>
+					<div class="form-group" id="Baxis">
+						<label for="formGroupExampleInput">Input Second Axis (b)</label>
+						<input type="text" class="form-control" id="b" placeholder="Input Radius Number">
+					</div>
+					<div class="form-group">
+						<label for="formGroupExampleInput2">Input X (Xc)</label>
+						<input type="text" class="form-control" id="Xc" placeholder="Input X Number">
+					</div>
+					<div class="form-group">
+						<label for="formGroupExampleInput3">Input Y (Yc)</label>
+						<input type="text" class="form-control" id="Yc" placeholder="Input Y Number">
+					</div>
+
+					<!-- Change Color-->
+					<label>Choose Color</label>
+					<div class="input-group">
+						<select class="custom-select" id="setcol">
+							<option selected>Choose Color</option>
+							<option value="1">Black</option>
+							<option value="2">Red</option>
+							<option value="3">Green</option>
+							<option value="4">Blue</option>
+							<option value="5">Orange</option>
+							<option value="6">Purple</option>
+							<option value="7">Yellow</option>
+							<option value="8">White</option>
+						</select>
+					</div>
+
+					<!-- Change Thickness-->
+					<br><label>Choose Thickness</label>
+					<div class="input-group">
+						<select class="custom-select" id="w">
+							<option selected>Choose Thickness</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</div>
+					<br><button type="button" class="btn btn-danger" id ="genereate" onclick="drawGen()">Generate</button>
+
+
+				</div>
+			</form>
+			<div class="Lists">
+				<h3>Lists</h3>
+				<div class="Object">
+					
+					<ol id ="list1"></ol>
+					<ol id ="list2"></ol>
+
+				</div>
+				<div class="Delete">
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="delObj()">
+						<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+						<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+					</svg>
+				</div>
+			</div>
+			<div class= "Output">
+				<h3>Output</h3>
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16" onclick="refresh()">
+					<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+					<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+				</svg>
+				<canvas id="can" width="700" height="700" style="border:1px solid #000000;" >
+				</canvas>
+				<br><button type="button" class="btn btn-info" onclick="clearScreen()">Clear Screen</button>
+			</div>
+		</div>
+		
+
+	</div>
+	
+	<script type="text/javascript">
+		function check() {
+			var selectopt = document.getElementById('opt').value
+			//var slectedvalue;
+			if(selectopt == '1') {
+				document.getElementById("a").disabled = true;
+				document.getElementById("b").disabled = true;
+				document.getElementById("r").disabled = false;
+				document.getElementById("a").value = "";
+				document.getElementById("b").value = "";
+
+					//selectedvalue == "Circle"
+					//array list
+				}
+				else if (selectopt == '2'){
+					document.getElementById("r").disabled = true;
+					document.getElementById("a").disabled = false;
+					document.getElementById("b").disabled = false;
+					document.getElementById("r").value = "";
+					//selectedvalue == "Ellipse"
+				}
+				else{
+					document.getElementById("r").disabled = false;
+					document.getElementById("a").disabled = false;
+					document.getElementById("b").disabled = false;
+					document.getElementById("r").value = "";
+					document.getElementById("a").value = "";
+					document.getElementById("b").value = "";	
+				}
+			}
+
+
+function selectList1(){
+	var items1 = document.querySelectorAll("#list1 li"),
+	tab1 = [], index1;
+
+	for(var  i=0; i<items1.length; i++){
+		tab1.push(items1[i].innerHTML);
+	}
+
+	for(var i=0; i<items1.length;i++){
+		items1[i].onclick = function() {
+			index1 = tab1.indexOf(this.innerHTML);
+			console.log(this.innerHTML + " INDEX = " + index1);
+		};
+	}
+}
+
+function selectList2(){
+	var items2 = document.querySelectorAll("#list2 li"),
+	tab2 = [], index;
+
+	for(var  i=0; i<items2.length; i++){
+		tab2.push(items2[i].innerHTML);
+	}
+
+	for(var i=0; i<items2.length;i++){
+		items2[i].onclick = function() {
+			index2 = tab2.indexOf(this.innerHTML);
+			console.log(this.innerHTML + " INDEX = " + index2);
+		};
+	}
+}
+
+function delObj() {
+	var items1 = document.querySelectorAll("#list1 li"),
+	tab1 = [], index1;
+	var items2 = document.querySelectorAll("#list2 li"),
+	tab2 = [], index2;
+	var setColor="8";
+
+	for(var  i=0; i<items1.length; i++){
+		tab1.push(items1[i].innerHTML);
+	}
+	for(var  i=0; i<items2.length; i++){
+		tab2.push(items2[i].innerHTML);
+	}
+
+	for(var i=0; i<items1.length;i++){
+		items1[i].onclick = function() {
+			index1 = tab1.indexOf(this.innerHTML);
+			console.log(this.innerHTML + " INDEX = " + index1);
+
+			var e1 = document.getElementById("list1").getElementsByTagName('li')[index1].innerText;
+
+			if(e1.indexOf("Circle")>-1){
+				drawCircle(circle.value[index1].param[0],circle.value[index1].param[1],circle.value[index1].param[2],circle.value[index1].param[3], setColor);
+				circle.value.splice(index1,1);
+				circle.num.splice(index1,1);
+				document.getElementById('list1').removeChild(items1[index1]);
+				delete items1[index1];
+			} 
+		};
+	}
+	for(var i=0; i<items2.length;i++){
+		items2[i].onclick = function() {
+			index2 = tab2.indexOf(this.innerHTML);
+			console.log(this.innerHTML + " INDEX = " + index2);
+
+			var e2 = document.getElementById("list2").getElementsByTagName('li')[index2].innerText;
+
+			if(e2.indexOf("Ellipse")>-1) {
+				drawEllipse(ellipse.value[index2].param[0],ellipse.value[index2].param[1],ellipse.value[index2].param[2],ellipse.value[index2].param[3],ellipse.value[index2].param[4], setColor);
+				ellipse.value.splice(index2,1);
+				ellipse.num.splice(index2,1);
+				document.getElementById('list2').removeChild(items2[index2]);
+				delete items2[index2];
+			}
+
+		};
+	}
+
+}
+
+
+</script>
+
+</body>
+</html>
